@@ -17,5 +17,6 @@
     "eslint-plugin-import": "2.26.0",
     "jest": "28.1.0",
     "nodemon": "^2.0.16"
-  }
+  },
+  "type": "module"
 }

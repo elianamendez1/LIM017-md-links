@@ -1,8 +1,27 @@
-// eslint-disable-next-line no-unused-vars
-const fs = require('fs');
-const path = require('path');
+import fs from 'fs';
+import path from 'path';
 
-// eslint-disable-next-line max-len
-const convertToAbsolute = (inputPath) => (path.isAbsolute(inputPath) ? inputPath : path.resolve(inputPath));
+// Verifica si la ruta existe
+export const isValidatedPath = (directory) => fs.existsSync(directory);
 
-console.log(convertToAbsolute);
+// Verificamos si la ruta es absoluta
+export const convertPathAbsolute = (url) => (!path.isAbsolute(url) ? path.resolve(url) : url);
+console.log(isValidatedPath, convertPathAbsolute, 'lo convirtió???');
+
+/* // fs.readFileSync : Metodo Síncrono que se encarga de leer el contenido de un archivo específico
+export const readFile = (file) => fs.readFileSync(file, 'utf-8');
+console.log(readFile);
+
+// Verificamos si la ruta es un archivo
+export const pathIsFile = (route) => {
+  const statsObj = fs.lstatSync(route);
+  return statsObj.isFile();
+};
+
+// Verificamos si la ruta es una carpeta
+export const pathIsDirectory = (route) => {
+  const statsObj = fs.lstatSync(route);
+  return statsObj.isDirectory();
+};
+console.log(pathIsDirectory);
+ */
