@@ -15,3 +15,14 @@ export const pathDirectory = (route) => {
   return statsObj.isDirectory();
 };
 console.log('¿La ruta es un directorio?', pathDirectory('filesTest'));
+
+// Comprobamos si la ruta es un archivo
+export const pathFile = (route) => {
+  const statsObj = fs.lstatSync(route);
+  return statsObj.isFile();
+};
+console.log('¿La ruta es un archivo?', pathFile('filesTest'));
+
+// Leemos el contenido de archivos específicos
+export const readFile = (file) => fs.readFileSync(file, 'utf-8');
+console.log('leeeeee un archivoooo');
