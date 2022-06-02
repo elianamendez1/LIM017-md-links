@@ -26,3 +26,24 @@ console.log('¿La ruta es un archivo?', pathFile('filesTest'));
 // Leemos el contenido de archivos específicos
 export const readFile = (file) => fs.readFileSync(file, 'utf-8');
 console.log('leeeeee un archivoooo');
+
+export const getFilesMd = (files) => {
+  const mdFiles = files.filter((file) => path.extname(file) === '.md');
+  return mdFiles.length > 0 ? mdFiles : [];
+};
+console.log(getFilesMd, 'funcioooon de traer archivos');
+
+export const recursionToGetFiles = (route) => {
+  const filesArr = [];
+  if (pathFile(route)) {
+    return [route];
+  }
+  const files = fs.readdirSync(route);
+  files.forEach((file) => {
+    const newPath = path.join(route, file);
+    filesArr.push(recursionToGetFiles(newPath));
+  });
+
+  return filesArr.flat();
+};
+console.log(recursionToGetFiles('filesTest'));
