@@ -6,8 +6,8 @@ export const validatePath = (directory) => fs.existsSync(directory);
 console.log('¿La ruta existe?', validatePath('filesTest'));
 
 // Si la ruta es relativa la convertimos a absoluta
-export const convertPathAbsolute = (url) => (!path.isAbsolute(url) ? path.resolve(url) : url);
-console.log('La ruta es relativa ahora la convertimos:', convertPathAbsolute('filesTest'));
+export const convertAbsolutePath = (url) => (!path.isAbsolute(url) ? path.resolve(url) : url);
+console.log('La ruta es relativa ahora la convertimos:', convertAbsolutePath('filesTest'));
 
 // Comprobamos si la ruta es una carpeta
 export const pathDirectory = (route) => {
@@ -46,4 +46,30 @@ export const recursionToGetFiles = (route) => {
 
   return filesArr.flat();
 };
-console.log(recursionToGetFiles('filesTest'));
+console.log(recursionToGetFiles('filesTest'), 'recurrrsioooon');
+
+export const getAllLinks = (track) => {
+  const pathAbsolute = convertAbsolutePath(track);
+
+  const fileContent = readFile(pathAbsolute);
+
+  const argumentsMdLinks = /\[([^[]+)\](\(.*\))/gm;
+
+  const croosLinks = fileContent.match(argumentsMdLinks);
+
+  if (!croosLinks) return [];
+
+  const singleCross = /\[([^[]+)\]\((.*)\)/;
+  const links = [];
+  for (let i = 0; i < croosLinks.length; i += 1) {
+    const text = singleCross.exec(croosLinks[i]);
+    links.push({
+      text: text[1],
+      href: text[2],
+      file: pathAbsolute,
+    });
+  }
+
+  return links;
+};
+console.log(getAllLinks('filesTest/test.md'));
