@@ -68,6 +68,18 @@ export const getAllLinks = (track) => {
 };
 console.log(getAllLinks('filesTest/test.md'));
 
-export const validatedLink = (link) => new Promise(() => {
-  fetch(link.href);
+export const validatedLink = (link) => new Promise((resolve) => {
+  const paramLink = link;
+  fetch(link.href)
+    .then((response) => {
+      paramLink.statusCode = response.status;
+      paramLink.message = 'Ok';
+      resolve(link);
+    })
+    .catch(() => {
+      paramLink.statusCode = 404;
+      paramLink.message = 'Fail';
+      resolve(link);
+    });
 });
+// console.log(validatedLink('https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map'));
