@@ -18,5 +18,8 @@
     "jest": "28.1.0",
     "nodemon": "^2.0.16"
   },
-  "type": "module"
+  "type": "module",
+  "dependencies": {
+    "node-fetch": "3.2.5"
+  }
 }

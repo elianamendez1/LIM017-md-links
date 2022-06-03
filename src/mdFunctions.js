@@ -1,5 +1,6 @@
 import fs from 'fs';
 import path from 'path';
+import fetch from 'node-fetch';
 
 // Verificamos la existencia de la ruta
 export const validatePath = (directory) => fs.existsSync(directory);
@@ -43,22 +44,16 @@ export const recursionToGetFiles = (route) => {
     const newPath = path.join(route, file);
     filesArr.push(recursionToGetFiles(newPath));
   });
-
   return filesArr.flat();
 };
 console.log(recursionToGetFiles('filesTest'), 'recurrrsioooon');
 
 export const getAllLinks = (track) => {
   const pathAbsolute = convertAbsolutePath(track);
-
   const fileContent = readFile(pathAbsolute);
-
   const argumentsMdLinks = /\[([^[]+)\](\(.*\))/gm;
-
   const croosLinks = fileContent.match(argumentsMdLinks);
-
   if (!croosLinks) return [];
-
   const singleCross = /\[([^[]+)\]\((.*)\)/;
   const links = [];
   for (let i = 0; i < croosLinks.length; i += 1) {
@@ -69,7 +64,10 @@ export const getAllLinks = (track) => {
       file: pathAbsolute,
     });
   }
-
   return links;
 };
 console.log(getAllLinks('filesTest/test.md'));
+
+export const validatedLink = (link) => new Promise(() => {
+  fetch(link.href);
+});
