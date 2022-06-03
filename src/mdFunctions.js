@@ -83,3 +83,13 @@ export const validatedLink = (link) => new Promise((resolve) => {
     });
 });
 // console.log(validatedLink('https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map'));
+
+export const validatedLinks = (links) => new Promise((resolve) => {
+  // es un array de promesas
+  const newLinks = [];
+  links.forEach((link) => newLinks.push(validatedLink(link)));
+  // eslint-disable-next-line no-promise-executor-return
+  return Promise.all(newLinks)
+    .then((res) => resolve(res))
+    .catch((err) => err);
+});
