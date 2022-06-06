@@ -1,0 +1,1 @@
+export const totalLinks = (links) => links.length;

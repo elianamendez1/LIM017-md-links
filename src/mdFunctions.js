@@ -4,35 +4,29 @@ import fetch from 'node-fetch';
 
 // Verificamos la existencia de la ruta
 export const validatePath = (directory) => fs.existsSync(directory);
-// console.log('¿La ruta existe?', validatePath('filesTest'));
+console.log('¿La ruta existe?', validatePath('filesTest'));
 
 // Si la ruta es relativa la convertimos a absoluta
 export const convertAbsolutePath = (url) => (!path.isAbsolute(url) ? path.resolve(url) : url);
-// console.log('La ruta es relativa ahora la convertimos:', convertAbsolutePath('filesTest'));
+console.log('La ruta es relativa ahora la convertimos:', convertAbsolutePath('filesTest'));
 
 // Comprobamos si la ruta es una carpeta
-export const pathDirectory = (route) => {
-  const statsObj = fs.lstatSync(route);
-  return statsObj.isDirectory();
-};
-// console.log('¿La ruta es un directorio?', pathDirectory('filesTest'));
+export const pathDirectory = (route) => fs.lstatSync(route).isDirectory();
+console.log('Comprobamos¿La ruta es un directorio?', pathDirectory('filesTest'));
 
 // Comprobamos si la ruta es un archivo
-export const pathFile = (route) => {
-  const statsObj = fs.lstatSync(route);
-  return statsObj.isFile();
-};
-// console.log('¿La ruta es un archivo?', pathFile('filesTest'));
+export const pathFile = (route) => fs.lstatSync(route).isFile();
+console.log('¿La ruta es un archivo?', pathFile('test.md'));
 
 // Leemos el contenido de archivos específicos
 export const readFile = (file) => fs.readFileSync(file, 'utf-8');
-// console.log('leeeeee un archivoooo');
+console.log('leeeeee un archivoooo');
 
 export const getFilesMd = (files) => {
   const mdFiles = files.filter((file) => path.extname(file) === '.md');
   return mdFiles.length > 0 ? mdFiles : [];
 };
-// console.log(getFilesMd, 'funcioooon de traer archivos');
+// console.log(getFilesMd('filesTest'), 'funcioooon de traer archivos');
 
 export const recursionToGetFiles = (route) => {
   const filesArr = [];
@@ -66,7 +60,7 @@ export const getAllLinks = (track) => {
   }
   return links;
 };
-// console.log(getAllLinks('filesTest/test.md'));
+// console.log(getAllLinks('filesTest/test/test.md'));
 
 export const validatedLink = (link) => new Promise((resolve) => {
   const paramLink = link;
