@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import CFonts from 'cfonts';
 import gradient from 'gradient-string';
 import { table } from 'table';

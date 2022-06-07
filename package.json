@@ -5,7 +5,12 @@
     "node": ">=14.x"
   },
   "scripts": {
-    "test": "jest --coverage"
+    "dev": "node ./src/mdlinks.js",
+    "demonio": "nodemon ./src/mdlinks.js",
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+  },
+  "bin": {
+    "md-links": "./src/cli.js"
   },
   "devDependencies": {
     "@babel/cli": "7.17.10",
@@ -15,8 +20,7 @@
     "eslint": "^8.16.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.26.0",
-    "jest": "28.1.0",
-    "nodemon": "^2.0.16"
+    "jest": "28.1.0"
   },
   "dependencies": {
     "cfonts": "3.1.0",
@@ -25,6 +29,7 @@
     "gradient-string": "2.0.1",
     "nanospinner": "1.1.0",
     "node-fetch": "3.2.5",
+    "nodemon": "2.0.16",
     "table": "6.8.0"
   },
   "type": "module"

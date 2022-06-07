@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import {
   validatePath,
   convertAbsolutePath,
@@ -10,7 +9,7 @@ import {
 
 // ! -------------------------------------------------------------------------------
 
-const mdLinks = (path, options) => new Promise((resolve, reject) => {
+export const mdLinks = (path, options) => new Promise((resolve, reject) => {
   if (!validatePath(path)) {
     reject(new Error('La ruta ingresada no existe'));
   } else {
