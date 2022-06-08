@@ -2,5 +2,5 @@
 *.swp
 .nyc_output/
 coverage/
-node_modules/
 filesTest/
+node_modules/

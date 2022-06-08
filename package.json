@@ -16,7 +16,7 @@
   "scripts": {
     "dev": "node ./src/mdLinks.js",
     "demonio": "nodemon ./src/mdlinks.js",
-    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
+    "test": "jest --verbose --coverage"
   },
   "bin": {
     "md-links": "./src/cli.js"
