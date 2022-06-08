@@ -6,8 +6,7 @@
     "email": "elianamendez1809@gmail.com",
     "url": "https://github.com/elianamendez1"
   },
-  "description": "Md-links tool checker es una libreria de línea de comando (CLI) que facilita la lectura, análisis y generar reportes estadísticos de los enlaces contenidos en archivos de formato Markdown.",
-  "main": "./src/mdlinks.js",
+  "description": "Md-links link checker es una libreria de línea de comando (CLI) que facilita la lectura y análisis para generar reportes estadísticos de los enlaces encontrados en archivos con formato Markdown.",
   "directories": {
     "test": "test"
   },
@@ -17,7 +16,7 @@
   "scripts": {
     "dev": "node ./src/mdLinks.js",
     "demonio": "nodemon ./src/mdlinks.js",
-    "test": "jest --coverage"
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest --coverage"
   },
   "bin": {
     "md-links": "./src/cli.js"
