@@ -1,4 +1,3 @@
-/* eslint-disable import/extensions */
 import {
   validatePath,
   convertAbsolutePath,
@@ -10,33 +9,29 @@ import {
 
 // ! -------------------------------------------------------------------------------
 
-const mdLinks = (path, options) => new Promise((resolve, reject) => {
+export const mdLinks = (path, options) => new Promise((resolve, reject) => {
   if (!validatePath(path)) {
-    reject(new Error('La ruta ingresada no existe'));
+    reject(new Error('The path entered does not exist'));
   } else {
     const AbsolutePath = convertAbsolutePath(path);
 
     const allFiles = recursionToGetFiles(AbsolutePath);
 
     if (allFiles.length === 0) {
-      reject(new Error('No existe ningún archivo en la ruta ingresada'));
+      reject(new Error('There is no file in the entered path'));
     } else {
       const mdFiles = getFilesMd(allFiles);
-      // console.log("allFiles", allFiles);
 
-      // console.log("miraaaaa mis MDFILES , ", mdFiles);
       if (mdFiles.length === 0) {
-        reject(new Error('No existen archivos MD en la ruta ingresada'));
+        reject(new Error('There are no MD files in the entered path'));
       } else {
-        // console.log("mdFiles", mdFiles);
-
         const links = [];
         mdFiles.forEach((file) => {
           links.push(...getAllLinks(file));
         });
 
         if (links.length === 0) {
-          reject(new Error('No existen links en la ruta ingresada'));
+          reject(new Error('There are no links in the entered route'));
         } else if (options.validate) {
           resolve(validatedLinks(links));
         } else {
@@ -48,5 +43,3 @@ const mdLinks = (path, options) => new Promise((resolve, reject) => {
 });
 
 export default mdLinks;
-
-console.log(mdLinks('filesTest'));

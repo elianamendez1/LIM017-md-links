@@ -1,12 +1,31 @@
 {
   "name": "md-links",
   "version": "0.1.0",
+  "author": {
+    "name": "Eliana Méndez",
+    "email": "elianamendez1809@gmail.com",
+    "url": "https://github.com/elianamendez1"
+  },
+  "description": "Md-links tool checker es una libreria de línea de comando (CLI) que facilita la lectura, análisis y generar reportes estadísticos de los enlaces contenidos en archivos de formato Markdown.",
+  "main": "./src/mdlinks.js",
+  "directories": {
+    "test": "test"
+  },
   "engines": {
     "node": ">=14.x"
   },
   "scripts": {
+    "dev": "node ./src/mdLinks.js",
+    "demonio": "nodemon ./src/mdlinks.js",
     "test": "jest --coverage"
   },
+  "bin": {
+    "md-links": "./src/cli.js"
+  },
+  "bugs": {
+    "url": "https://github.com/elianamendez1/LIM017-md-links/issues"
+  },
+  "homepage": "https://github.com/elianamendez1/LIM017-md-links#readme",
   "devDependencies": {
     "@babel/cli": "7.17.10",
     "@babel/core": "7.18.2",
@@ -15,11 +34,17 @@
     "eslint": "^8.16.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.26.0",
-    "jest": "28.1.0",
-    "nodemon": "^2.0.16"
+    "jest": "28.1.0"
   },
-  "type": "module",
   "dependencies": {
-    "node-fetch": "3.2.5"
-  }
+    "cfonts": "3.1.0",
+    "chalk": "5.0.1",
+    "commander": "9.3.0",
+    "gradient-string": "2.0.1",
+    "nanospinner": "1.1.0",
+    "node-fetch": "3.2.5",
+    "nodemon": "2.0.16",
+    "table": "6.8.0"
+  },
+  "type": "module"
 }
