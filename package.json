@@ -6,7 +6,7 @@
     "email": "elianamendez1809@gmail.com",
     "url": "https://github.com/elianamendez1"
   },
-  "description": "Md-links link checker es una libreria de línea de comando (CLI) que facilita la lectura y análisis para generar reportes estadísticos de los enlaces encontrados en archivos con formato Markdown.",
+  "description": "Md-links es una interfaz de línea de comando (CLI) que facilita la lectura y análisis de archivos con formato Markdown, para generar reportes estadísticos de las URLs encontradas en éstos archivos.",
   "directories": {
     "test": "test"
   },
@@ -16,10 +16,15 @@
   "scripts": {
     "dev": "node ./src/mdLinks.js",
     "demonio": "nodemon ./src/mdlinks.js",
-    "test": "jest --verbose --coverage"
+    "test": "jest --env=node --coverage"
   },
   "bin": {
     "md-links": "./src/cli.js"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.[t|j]sx?$": "babel-jest"
+    }
   },
   "bugs": {
     "url": "https://github.com/elianamendez1/LIM017-md-links/issues"
@@ -30,12 +35,14 @@
     "@babel/core": "7.18.2",
     "@babel/node": "7.17.10",
     "@babel/preset-env": "7.18.2",
-    "eslint": "^8.16.0",
+    "cross-env": "7.0.3",
+    "eslint": "8.16.0",
     "eslint-config-airbnb-base": "15.0.0",
     "eslint-plugin-import": "2.26.0",
     "jest": "28.1.0"
   },
   "dependencies": {
+    "babel-jest": "28.1.1",
     "cfonts": "3.1.0",
     "chalk": "5.0.1",
     "commander": "9.3.0",
@@ -45,5 +52,6 @@
     "nodemon": "2.0.16",
     "table": "6.8.0"
   },
+
   "type": "module"
 }
