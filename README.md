@@ -68,13 +68,12 @@ Se mostrarán el texto, la URL, la ruta del archivo (dónde el link fue encontra
 
 ### API JavaScript 1
 
-![API](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/flowchart/flowchartJavascriptAPI.png)
+![API](https://github.com/elianamendez1/LIM017-md-links/blob/827423f01551289441fdda30436f5e1a9fd55043/images/flowchart/flowchartJavascriptAPI.png)
 
-![API](https://github.com/elianamendez1/LIM017-md-links/blob/HU1/images/flowchart/Flujograma%20Proyecto%20MD%20Links-02.png)
 
 ### CLI (Command Line Interface) 2
 
-![CLI](fotodelnocomando.jpg)
+![CLI](https://github.com/elianamendez1/LIM017-md-links/blob/827423f01551289441fdda30436f5e1a9fd55043/images/flowchart/flowchartCLI.png)
 
 ## 4. Liberías empleadas 📚
 
