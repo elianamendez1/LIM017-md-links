@@ -11,6 +11,6 @@
     },
     "rules": {
         "import/extensions": "off",
-        "eslint-env jest": "off"
+        "eslint-env jest": "on"
     }
 }
