@@ -1,6 +1,6 @@
 # Md-Links
 
-![md-links](fotodelnocomando.png)
+![md-links](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/md-links.png)
 
 **Md-links** es una interfaz de línea de comando (CLI) que facilita la lectura y análisis de archivos con formato Markdown, para generar reportes estadísticos de las URLs encontradas en éstos archivos.
 
@@ -43,32 +43,34 @@ Para ejecutar la línea de comando en la terminal usar el comando:
 
 Se mostrará el texto, la URL y la ruta del archivo dónde el link fue encontrado
 
-![pathNoCommands](fotodelnocomando.png)
+![pathNoCommands](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/options/pathNoCommand.png)
 
 ### `--help o -h`
 
 Se mostrará una tabla de ayuda con comandos válidos y ejemplos para aplicarlos.
 
-![--helpOptions](fotodelnocomando.png)
+![--helpOptions](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/options/helpOptions.png)
 
 ### `--stats o -s`
 
 Se mostrarán estadísticas básicas sobre los links | links totales y links únicos.
 
-![-sOption](fotodelnocomando.png)
+![-sOption](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/options/-sOption.png)
 
 ### --validate o -va
 
 Se mostrarán el texto, la URL, la ruta del archivo (dónde el link fue encontrado) y una respuesta que validar el funcionamiento del link (con un codigo de status y un mensaje "Ok" o "Fail")
 
-![-vaOption](fotodelnocomando.png)
+![-vaOption](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/options/-vaOption.png)
 
 
 ## 3. Diagrama de Flujo 1 y 2
 
 ### API JavaScript 1
 
-![API](fotodelnocomando.jpg)
+![API](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/flowchart/flowchartJavascriptAPI.png)
+
+![API](https://github.com/elianamendez1/LIM017-md-links/blob/HU1/images/flowchart/Flujograma%20Proyecto%20MD%20Links-02.png)
 
 ### CLI (Command Line Interface) 2
 
