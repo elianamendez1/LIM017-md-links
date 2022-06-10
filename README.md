@@ -31,11 +31,10 @@ La instalación puede hacerse a través de la [libreria](https://www.npmjs.com/p
 
 ## 2. Guía de Uso
 
-Para ejecutar la línea de comando en la terminal usar el comando:
+Para ejecutar la línea de comando en la terminal usar:
 
 ```
-  md-links <path-to-file> [options]
-
+ md-links <path-to-file> [options]
 ```
 
 ### Opciones.
@@ -60,7 +59,7 @@ Se mostrarán estadísticas básicas sobre los links | links totales y links ún
 
 ### --validate o -va
 
-Se mostrarán el texto, la URL, la ruta del archivo (dónde el link fue encontrado) y una respuesta que validar el funcionamiento del link (con un codigo de status y un mensaje "Ok" o "Fail")
+Se mostrarán el texto, la URL, la ruta del archivo (dónde el link fue encontrado) y una respuesta que valida el funcionamiento del link (con un codigo de status y un mensaje "Ok" o "Fail")
 
 ![-vaOption](https://github.com/elianamendez1/LIM017-md-links/blob/7b95496abc43c546f6a8fbc3621e7ec17a87ea09/images/options/-vaOption.png)
 
