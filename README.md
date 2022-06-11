@@ -23,11 +23,9 @@ Esta librería permite:
 
 ## 1. Instalación
 
-La instalación puede hacerse a través de la [libreria](https://www.npmjs.com/package/md-links) con el comando
+La instalación puede hacerse a través de la [libreria](https://www.npmjs.com/package/md-links-elimendeza) con el comando
 
-      npm install @elimendez/md-links
-
-> **Nota:** También puedes instalar la librería con uso del comando `npm i md-links`
+      npm i md-links-elimendeza
 
 ## 2. Guía de Uso
 

@@ -19,18 +19,30 @@
     "demonio": "nodemon ./src/mdlinks.js",
     "test": "jest --coverage"
   },
+  "keywords": [
+    "markdown",
+    "links",
+    "laboratoria",
+    "programmer",
+    "tech",
+    "nodejs",
+    "CLI",
+    "javascript",
+    "filesystem",
+    "path"
+  ],
+  "license": "MIT",
   "bin": {
     "md-links": "./src/cli.js"
-  },
-  "jest": {
-    "transform": {
-      "^.+\\.[t|j]sx?$": "babel-jest"
-    }
   },
   "bugs": {
     "url": "https://github.com/elianamendez1/LIM017-md-links/issues"
   },
   "homepage": "https://github.com/elianamendez1/LIM017-md-links#readme",
+  "repository": {
+    "type": "git",
+    "url" : "https://github.com/elianamendez1/LIM017-md-links"
+  },
   "devDependencies": {
     "@babel/cli": "7.17.10",
     "@babel/core": "7.18.2",
