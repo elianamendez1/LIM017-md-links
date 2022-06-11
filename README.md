@@ -16,8 +16,7 @@ Esta librería permite:
 * [ Guía de uso ](#2-guía-de-uso)
 * [ Diagrama de flujo ](#3-diagrama-de-flujo)
 * [ Dependencias adoptadas ](#4-dependencias-adoptadas)
-* [ Backlog ](#5-backlog)
-* [ Autor ](#6-autor)
+* [ Autor ](#5-autor)
 
 ***
 
