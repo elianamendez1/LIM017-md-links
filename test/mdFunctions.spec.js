@@ -1,15 +1,15 @@
-import fetch from "node-fetch";
+import { fetch } from '../src/libraries.js';
 import {
   getFilesMd,
-  // recursionToGetFiles,
+  recursionToGetFiles,
   getAllLinks,
   validatedLink,
-  // validatedLinks,
-} from '../src/mdFunctions';
+  validatedLinks,
+} from '../src/mdFunctions.js';
 
-// jest.mock("node-fetch", () => jest.fn());
+jest.mock('node-fetch', () => jest.fn());
 
-jest.mock('node-fetch');
+const path = 'C:\\Users\\TEST\\Desktop\\LABORATORIA\\PROYECTOS\\LIM017-md-links\\prueba.md'
 
 describe('getFilesMd function', () => {
   it('should return an array of files with ext name ".md" if list has md files', () => {
@@ -35,40 +35,20 @@ describe('getFilesMd function', () => {
   });
 });
 
-/* describe('recursionToGetFiles function', () => {
+describe('recursionToGetFiles function', () => {
   it('should return an array of files if path contains files', () => {
-    const path =
-      'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest';
-
-    const filesRecursive = [
-      'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
-      'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\enlacesRotos.md',
-      'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\sinEnlaces.md',
-      'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test.md',
-      'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test.txt',
+    const links = [
+      'filesTest\\enlacesRotos.md',
+      'filesTest\\sinEnlaces.md',
+      'filesTest\\test\\test.md',
     ];
 
-    expect(recursionToGetFiles(path)).toEqual([filesRecursive]);
+    expect(recursionToGetFiles('filesTest')).toEqual(expect.arrayContaining(links));
   });
-}); */
-
-
-
-
+});
 
 describe("getAllLinks function", () => {
   it("should return an array of links (text, href, file) if the content of the file has links", () => {
-    const content = `Lorem ipsum dolor sit amet, consectetur adipiscing elit..
-    [LINK 1](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/)
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit..
-
-    [LINK 2](https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map)
-
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit..
-
-    [LINK 3](https://curriculum.laboratoria.la/es/topics/javascript/05-objects/01-objects)`;
-
     const path =
       'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md';
     const linksExpected = [
@@ -92,12 +72,9 @@ describe("getAllLinks function", () => {
   });
 });
 
-
-
-
-// ! preguntar en test camp
 describe("validatedLink function", () => {
   it("should return an object {text, href, file, statusCode, message} if the link is Working", () => {
+    fetch.mockResolvedValue({ status: 200, statusText: "ok" });
     const link = {
       text: 'Markdown',
       href: 'https://es.wikipedia.org/wiki/Markdown',
@@ -109,17 +86,122 @@ describe("validatedLink function", () => {
       href: 'https://es.wikipedia.org/wiki/Markdown',
       file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
       statusCode: 200,
-      message: 'Ok',
+      message: 'ok',
+    };
+    return validatedLink(link)
+    .then((res) => {
+      expect(res).toEqual(linkExpected);
+    });
+  });
+
+  it("should return an object {text, href, file, statusCode, message FAIL} if the link is Working", () => {
+    fetch.mockRejectedValue({ status: 400, statusText: "fail" });
+    const link = {
+      text: 'Markdown',
+      href: 'https://es.wikipdia.org/wiki/Markdown',
+      file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
     };
 
-    // expect(validatedLink(link)).toEqual(linkExpected);
-
-    // fetch.mockResolvedValue({ status: 200, statusText: "OK" });
-    // fetch.get.mockResolvedValue({ status: 200, statusText: "OK" });
-    // axios.get.mockResolvedValue(linkExpected);
-    validatedLink(link).then((res) => {
+    const linkExpected = {
+      text: 'Markdown',
+      href: 'https://es.wikipdia.org/wiki/Markdown',
+      file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+      statusCode: 400,
+      message: 'fail',
+    };
+    return validatedLink(link)
+    .catch((res) => {
       expect(res).toEqual(linkExpected);
-      // expect(res).toEqual(linkExpected);
+    });
+  });
+});
+
+
+describe("validatedLinks function", () => {
+  it("statusCode:200 | message:ok", async () => {
+    fetch.mockResolvedValue({ status: 200, statusText: "ok" });
+    const links =[
+      {
+        text: 'LINK 1',
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+        message: 'ok',
+        statusCode: 200,
+      },
+      {
+        text: 'LINK 2',
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+        message: 'ok',
+        statusCode: 200,
+      },
+    {
+      text: 'LINK 3',
+      href: 'https://curriculum.laboratoria.la/es/topics/javascript/05-objects/01-objects',
+      file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+      message: 'ok',
+      statusCode: 200,
+    },
+  ];
+
+    const linksExpected = [
+      {
+        text: 'LINK 1',
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+        message: 'ok',
+        statusCode: 200,
+      },
+      {
+        text: 'LINK 2',
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+        message: 'ok',
+        statusCode: 200,
+      },
+      {
+        text: 'LINK 3',
+        href: 'https://curriculum.laboratoria.la/es/topics/javascript/05-objects/01-objects',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+        message: 'ok',
+        statusCode: 200,
+      },
+    ];
+    return validatedLinks((links))
+    .then((res) => {
+      expect(res).toEqual(linksExpected);
+    });
+  });
+
+  it("statusCode:400 | message:fail", async() => {
+    fetch.mockRejectedValue({ status: 400, statusText: "fail" });
+    const links =[
+      {
+        text: 'LINK 1',
+        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+      },
+  ];
+
+    const linksExpected = [
+      {
+        text: 'LINK 1',
+        href: 'https://develper.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+        message: 'fail',
+        statusCode: 400,
+      },
+      {
+        text: 'LINK 2',
+        href: 'https://develper.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
+        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
+        message: 'fail',
+        statusCode: 400,
+      },
+    ];
+    return validatedLinks((links))
+    .catch((err) => {
+      expect(err).toEqual(linksExpected);
     });
   });
 });

@@ -1,0 +1,1 @@
+export const fetch = jest.fn(() => Promise({status: 200, ok: 'ok'}));

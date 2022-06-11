@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import fetch from 'node-fetch';
+import { fetch } from './libraries.js';
 
 export const validatePath = (directory) => fs.existsSync(directory);
 
@@ -54,7 +54,7 @@ export const validatedLink = (link) => new Promise((resolve) => {
   fetch(link.href)
     .then((response) => {
       paramLink.statusCode = response.status;
-      paramLink.message = 'Ok';
+      paramLink.message = 'ok';
       resolve(link);
     })
     .catch(() => {
