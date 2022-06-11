@@ -1,12 +1,13 @@
 {
-  "name": "md-links",
-  "version": "0.1.0",
+  "name": "md-links-elimendeza",
+  "version": "1.0.0",
   "author": {
     "name": "Eliana Méndez",
     "email": "elianamendez1809@gmail.com",
     "url": "https://github.com/elianamendez1"
   },
   "description": "Md-links es una interfaz de línea de comando (CLI) que facilita la lectura y análisis de archivos con formato Markdown, para generar reportes estadísticos de las URLs encontradas en éstos archivos.",
+  "main": "./src/mdlinks.js",
   "directories": {
     "test": "test"
   },

@@ -9,8 +9,6 @@ import {
 
 jest.mock('node-fetch', () => jest.fn());
 
-const path = 'C:\\Users\\TEST\\Desktop\\LABORATORIA\\PROYECTOS\\LIM017-md-links\\prueba.md'
-
 describe('getFilesMd function', () => {
   it('should return an array of files with ext name ".md" if list has md files', () => {
     const allFiles = [
@@ -170,38 +168,6 @@ describe("validatedLinks function", () => {
     return validatedLinks((links))
     .then((res) => {
       expect(res).toEqual(linksExpected);
-    });
-  });
-
-  it("statusCode:400 | message:fail", async() => {
-    fetch.mockRejectedValue({ status: 400, statusText: "fail" });
-    const links =[
-      {
-        text: 'LINK 1',
-        href: 'https://developer.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
-        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
-      },
-  ];
-
-    const linksExpected = [
-      {
-        text: 'LINK 1',
-        href: 'https://develper.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/',
-        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
-        message: 'fail',
-        statusCode: 400,
-      },
-      {
-        text: 'LINK 2',
-        href: 'https://develper.mozilla.org/es/docs/Web/JavaScript/Reference/Global_Objects/Array/map',
-        file: 'C:\\Users\\ELIANA\\Documents\\LIM017-md-links\\filesTest\\test\\test.md',
-        message: 'fail',
-        statusCode: 400,
-      },
-    ];
-    return validatedLinks((links))
-    .catch((err) => {
-      expect(err).toEqual(linksExpected);
     });
   });
 });
